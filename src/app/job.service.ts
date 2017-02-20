@@ -8,7 +8,7 @@ const testjobs: Job[] = [
 
 @Injectable()
 export class JobService {
-    getJobs(): Job[] {
-        return testjobs;
+    getJobs(): Promise<Job[]> {
+        return Promise.resolve(testjobs);
     }
 }

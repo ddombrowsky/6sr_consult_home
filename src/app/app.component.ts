@@ -33,7 +33,7 @@ export class AppComponent implements OnInit {
     }
 
     getJobs(): void {
-        this.jobs = this.jobService.getJobs();
+        this.jobService.getJobs().then(jobs => this.jobs = jobs);
     }
 }
 
