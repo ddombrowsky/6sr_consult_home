@@ -8,3 +8,6 @@ copied from quickstart guide at
 and
     https://angular.io/docs/ts/latest/guide/setup.html
 
+
+node express installed with
+    npm install express --save
