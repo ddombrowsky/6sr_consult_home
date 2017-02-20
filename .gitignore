@@ -1,0 +1,4 @@
+*.js.map
+consult.db
+e2e
+node_modules

@@ -1,0 +1,10 @@
+PREREQUISITES:
+
+apt-get install npm
+
+
+copied from quickstart guide at
+    git clone https://github.com/angular/quickstart.git quickstart
+and
+    https://angular.io/docs/ts/latest/guide/setup.html
+
