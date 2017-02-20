@@ -1,7 +1,39 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { JobService } from './job.service';
+import { Job } from './job';
 
 @Component({
   selector: 'sixsr-home',
-  template: `<h1>Hello {{name}}</h1>`,
+  styles: [`
+    .selected {
+        background-color: #CFD8DC !important;
+        color: white;
+    }
+  `],
+  template: `
+    <h2>Work Experience &amp; Projects:</h2>
+    <ul class="jobs">
+        <li *ngFor="let job of jobs">
+            <span class="jobname">{{job.name}}</span> |
+            <span class="jobtitle">{{job.title}}</span>
+        </li>
+    </ul>
+
+  `,
+  providers: [JobService]
 })
-export class AppComponent  { name = '6th Street Radio'; }
+
+export class AppComponent implements OnInit {
+    constructor(private jobService: JobService) { }
+
+    jobs: Job[];
+
+    ngOnInit(): void {
+        this.getJobs();
+    }
+
+    getJobs(): void {
+        this.jobs = this.jobService.getJobs();
+    }
+}
+
