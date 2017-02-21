@@ -5,4 +5,6 @@
 # you can use node express to serve the same files, and then you can
 # write a simple API also in node.  I'm not sure if the lite-server can do that.
 
+cd `dirname $0`
+
 npm run build && node src/api/index.js

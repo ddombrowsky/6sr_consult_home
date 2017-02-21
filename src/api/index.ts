@@ -1,9 +1,29 @@
+let sqlite3 = require('sqlite3').verbose();
 let express = require('express');
 let app = express();
 let path = require('path');
 
 let __projectRoot = __dirname + '/../';
 let server_port = 3000;
+
+//
+// DB objects (probably should be in another file)
+//
+export class DBJob {
+    constructor(
+        public id: number,
+        public name: string,
+        public title: string,
+    ) { }
+
+    public toJSON() {
+        return {
+            id: this.id,
+            name: this.name,
+            title: this.title
+        };
+    }
+}
 
 //
 // Serve up the Angular2 pages.
@@ -21,11 +41,34 @@ app.get('/node_modules/*', function(req: any, res: any) {
 //
 
 app.get('/api/jobs', function(req: any, res: any) {
-    // TODO: make sqlite connection to DB
-    res.json([
-        {id: 1, name: 'jobname1', title: 'jobtitle2'},
-        {id: 2, name: 'jobname2', title: 'jobtitle2'}
-    ]);
+
+    // NOTE: db path is relative to where node is started
+    let db = new sqlite3.Database('consult.db');
+
+    let jobs: any[] = [];
+
+    // query is read-only, no need for serialize().
+    // Could use .each here, but why?
+    db.all('select id, name, title from jobs order by ord asc',
+        function(err: string, rows: any[]) {
+            if (err != null) {
+                console.error('sqlite ERROR: ' + err);
+                return;
+            }
+            for (let i = 0; i < rows.length; i++) {
+                let dbj = new DBJob(rows[i].id,
+                                    rows[i].name,
+                                    rows[i].title);
+                jobs.push(dbj.toJSON());
+                console.log('received from sqlite: ' + rows[i].name);
+            }
+
+            console.log('received ' + jobs.length + ' rows');
+            res.json(jobs);
+        }
+    );
+
+    db.close();
 });
 
 //
