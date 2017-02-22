@@ -9,6 +9,9 @@ import { Job, JobDetail } from './job';
         background-color: #CFD8DC !important;
         color: white;
     }
+    .jobtitle {
+        cursor: pointer
+    }
   `],
   template: `
     <h2>Work Experience &amp; Projects:</h2>
