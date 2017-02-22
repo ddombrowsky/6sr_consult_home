@@ -4,7 +4,11 @@ let app = express();
 let path = require('path');
 
 let __projectRoot = __dirname + '/../';
-let server_port = 3000;
+
+// For now, node owns the web server.  It would also be possible to
+// run the Angular2 pages using plain-ol' apache, and change the API
+// calls to direct to another port where node is running.
+let server_port = 80;
 
 //
 // DB objects (probably should be in another file)
