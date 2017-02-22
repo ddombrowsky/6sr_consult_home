@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
-import { Job } from './job';
+import { Job, JobDetail } from './job';
 
 @Injectable()
 export class JobService {
 
     private jobsUrl = 'api/jobs';
+    private jobDetailUrl = 'api/job/';
 
     constructor(private http: Http) { }
 
@@ -14,6 +15,13 @@ export class JobService {
         return this.http.get(this.jobsUrl)
             .toPromise()
             .then(response => response.json() as Job[])
+            .catch(this.handleError);
+    }
+
+    getJobDetail(id: number): Promise<JobDetail[]> {
+        return this.http.get(this.jobDetailUrl + id)
+            .toPromise()
+            .then(response => response.json() as JobDetail[])
             .catch(this.handleError);
     }
 

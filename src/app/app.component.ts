@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { JobService } from './job.service';
-import { Job } from './job';
+import { Job, JobDetail } from './job';
 
 @Component({
   selector: 'sixsr-home',
@@ -13,13 +13,14 @@ import { Job } from './job';
   template: `
     <h2>Work Experience &amp; Projects:</h2>
     <ul class="jobs">
-        <li *ngFor="let job of jobs" (click)="onSelect(job)">
+        <li *ngFor="let job of jobs">
             <span class="jobname">{{job.name}}</span> |
-            <span class="jobtitle">{{job.title}}</span>
+            <span class="jobtitle" (click)="onSelect(job)">{{job.title}}</span>
             <div *ngIf="expandedJob[job.id] == true">
             <ul>
-                <li>a</li>
-                <li>b</li>
+                <li *ngFor="let detail of job.details">
+                    <span class="jobdetail">{{detail.desc}}</span>
+                </li>
             </ul>
             </div>
         </li>
@@ -50,6 +51,15 @@ export class AppComponent implements OnInit {
     }
 
     onSelect(job: Job): void {
+        // fetch details
+        if (job.details == null || job.details.length == 0) {
+            job.details = [{desc: "Loading..."} as JobDetail];
+
+            this.jobService.getJobDetail(job.id).then(details => {
+                job.details = details;
+            });
+        }
+
         // toggle showing of details
         this.expandedJob[job.id] = !this.expandedJob[job.id];
     }

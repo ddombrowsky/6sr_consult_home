@@ -25,6 +25,8 @@ export class DBJob {
     }
 }
 
+const DBPATH = 'consult.db';
+
 //
 // Serve up the Angular2 pages.
 //
@@ -43,7 +45,7 @@ app.get('/node_modules/*', function(req: any, res: any) {
 app.get('/api/jobs', function(req: any, res: any) {
 
     // NOTE: db path is relative to where node is started
-    let db = new sqlite3.Database('consult.db');
+    let db = new sqlite3.Database(DBPATH);
 
     let jobs: any[] = [];
 
@@ -52,7 +54,7 @@ app.get('/api/jobs', function(req: any, res: any) {
     db.all('select id, name, title from jobs order by ord asc',
         function(err: string, rows: any[]) {
             if (err != null) {
-                console.error('sqlite ERROR: ' + err);
+                console.error(req.path + ': ' + err);
                 return;
             }
             for (let i = 0; i < rows.length; i++) {
@@ -65,6 +67,30 @@ app.get('/api/jobs', function(req: any, res: any) {
 
             console.log('received ' + jobs.length + ' rows');
             res.json(jobs);
+        }
+    );
+
+    db.close();
+});
+
+app.get('/api/job/:id', function(req: any, res: any) {
+    let db = new sqlite3.Database(DBPATH);
+    console.log('retrieving details for job id ' + req.params.id);
+
+    let details: any[] = [];
+
+    db.all('select desc from job_detail where job_id = ? order by ord asc',
+        [ req.params.id ],
+        function(err: string, rows: any[]) {
+            if (err != null) {
+                console.error(req.path + ': ' + err);
+                return;
+            }
+            for (let i = 0; i < rows.length; i++) {
+                details.push({desc: rows[i].desc});
+            }
+
+            res.json(details);
         }
     );
 
