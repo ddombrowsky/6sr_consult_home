@@ -3,6 +3,20 @@ h1 {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 250%;
 }
+.jobentry {
+  padding: 5px;
+}
+.jobtitle {
+  border-radius: 4px;
+  background-color: gray;
+  color: white;
+  font-weight: bold;
+  padding: 5px;
+}
+.jobdetailblock{
+  padding-top: 5px;
+}
+
 .footer {
   background-color: teal;
   color: white;

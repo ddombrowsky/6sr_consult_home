@@ -16,10 +16,10 @@ import { Job, JobDetail } from './job';
   template: `
     <h2>Work Experience &amp; Projects:</h2>
     <ul class="jobs">
-        <li *ngFor="let job of jobs">
+        <li class="jobentry" *ngFor="let job of jobs">
             <span class="jobname">{{job.name}}</span> |
             <span class="jobtitle" (click)="onSelect(job)">{{job.title}}</span>
-            <div *ngIf="expandedJob[job.id] == true">
+            <div class="jobdetailblock" *ngIf="expandedJob[job.id] == true">
             <ul>
                 <li *ngFor="let detail of job.details">
                     <span class="jobdetail">{{detail.desc}}</span>
