@@ -25,6 +25,10 @@ class ConsoleTowerDisplay implements TowerDisplay {
                 if (length > 0) {
                     // center the length string in the display
                     outstr += length;
+                    if (length > 9) {
+                        // 2-digit length
+                        i++;
+                    }
                 } else {
                     outstr += ' ';
                 }
