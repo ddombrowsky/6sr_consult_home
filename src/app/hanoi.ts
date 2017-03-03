@@ -12,7 +12,8 @@ export class Spindle {
         if (this.length() > 0) {
             return this.stack[this.stack.length - 1];
         } else {
-            return -1;
+            // can't return Number.MAX_SAFE_INTEGER; ?
+            return Number.MAX_VALUE;
         }
     }
 
