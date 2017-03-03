@@ -1,10 +1,10 @@
 
 export interface TowerDisplay {
-    renderLine(length: number);
+    renderLine(length: number, height: number);
 }
 
 export class Spindle {
-    constructor() {
+    constructor(private maxheight: number) {
         this.stack = [];
     }
 
@@ -39,14 +39,13 @@ export class Spindle {
     }
 
     public render(disp: TowerDisplay) {
-        if (this.length() <= 0) {
-            disp.renderLine(0);
-            return;
-        }
-
-        let i = this.stack.length - 1;
+        let i = this.maxheight - 1;
         while (i >= 0) {
-            disp.renderLine(this.stack[i]);
+            if (this.stack[i] == undefined) {
+                disp.renderLine(0, i);
+            } else {
+                disp.renderLine(this.stack[i], i);
+            }
             i--;
         }
     }

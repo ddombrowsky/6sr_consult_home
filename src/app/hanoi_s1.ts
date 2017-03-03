@@ -6,9 +6,11 @@ import {
 
 class ConsoleTowerDisplay implements TowerDisplay {
     // radius is the number of spaces before the center pole
-    constructor(private radius: number) { }
+    constructor(private radius: number) {
+        this.disp = [];
+    }
 
-    renderLine(length: number) {
+    renderLine(length: number, height: number) {
         let cen = this.radius;
         let pad = cen - length;
         let outstr = '';
@@ -20,7 +22,12 @@ class ConsoleTowerDisplay implements TowerDisplay {
 
         for ( ; i <= (this.radius * 2) - pad ; i++) {
             if (i == cen) {
-                outstr += length;
+                if (length > 0) {
+                    // center the length string in the display
+                    outstr += length;
+                } else {
+                    outstr += ' ';
+                }
             } else {
                 outstr += '=';
             }
@@ -31,13 +38,39 @@ class ConsoleTowerDisplay implements TowerDisplay {
         }
 
         outstr += '|';
-        console.log(outstr);
+        if (this.disp[height] == undefined) {
+            this.disp[height] = '';
+        }
+
+        // Append this string to the list of strings for this height.
+        // This allows us to display the towers side-by-side.
+        this.disp[height] += outstr;
     }
+
+    public show() {
+        let i = this.disp.length - 1;
+
+        while (i >= 0) {
+            if (this.disp[i] == undefined) {
+                this.disp[i] = '';
+                for(let j = 0; j < (this.radius * 2) + 1; j++) {
+                    this.disp[i] += ' ';
+                }
+            }
+            console.log(this.disp[i]);
+            i--;
+        }
+    }
+    public resetDisplay() {
+        this.disp = [];
+    }
+
+    private disp: string[];
 }
 
-let a = new Spindle();
-let b = new Spindle();
-let c = new Spindle();
+let a = new Spindle(5);
+let b = new Spindle(5);
+let c = new Spindle(5);
 let cdisp = new ConsoleTowerDisplay(10);
 
 a.push(4);
@@ -46,12 +79,12 @@ a.push(2);
 a.push(1);
 
 function display() {
-    console.log("a:");
     a.render(cdisp);
-    console.log("b:");
     b.render(cdisp);
-    console.log("c:");
     c.render(cdisp);
+
+    cdisp.show();
+    cdisp.resetDisplay();
 }
 
 display();
