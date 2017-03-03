@@ -72,29 +72,39 @@ class ConsoleTowerDisplay implements TowerDisplay {
     private disp: string[];
 }
 
-let a = new Spindle(7);
-let b = new Spindle(7);
-let c = new Spindle(7);
-let cdisp = new ConsoleTowerDisplay(10);
+let ht = 13;
+let a = new Spindle(ht);
+let b = new Spindle(ht);
+let c = new Spindle(ht);
+let cdisp = new ConsoleTowerDisplay(ht + 2);
 
-a.push(7);
-a.push(6);
-a.push(5);
-a.push(4);
-a.push(3);
-a.push(2);
-a.push(1);
 
-function display() {
+for (let i = ht; i > 0; i--) {
+    a.push(i);
+}
+
+function display(round: number) {
     a.render(cdisp);
     b.render(cdisp);
     c.render(cdisp);
 
+    // clear screen
+    process.stdout.write('\x1Bc');
+
+    console.log('rounds: ' + round);
+
+    // show towers
     cdisp.show();
+
     cdisp.resetDisplay();
+
+    let i = 1000;
+    while(i-->0){
+        process.stdout.write('.\x0d');
+    }
 }
 
-let round = 0;
+let round = 1;
 
 // Move nMove disks from src to dst.
 function solve3towers(src: Spindle, dst: Spindle, store: Spindle,
@@ -110,9 +120,8 @@ function solve3towers(src: Spindle, dst: Spindle, store: Spindle,
     // move bottom disk to dst (should never fail)
     src.popTo(dst);
 
-    console.log('rounds: ' + round);
+    display(round);
     round++;
-    display();
 
     // move other disks to dst
     solve3towers(store, dst, src, nMove - 1);
