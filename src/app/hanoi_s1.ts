@@ -1,78 +1,10 @@
 
 import {
     Spindle,
-    TowerDisplay
+    ConsoleTowerDisplay
        } from './hanoi';
 
-class ConsoleTowerDisplay implements TowerDisplay {
-    // radius is the number of spaces before the center pole
-    constructor(private radius: number) {
-        this.disp = [];
-    }
-
-    renderLine(length: number, height: number) {
-        let cen = this.radius;
-        let pad = cen - length;
-        let outstr = '';
-        let i = 0;
-
-        for ( ; i < pad; i++) {
-            outstr += ' ';
-        }
-
-        for ( ; i <= (this.radius * 2) - pad ; i++) {
-            if (i == cen) {
-                if (length > 0) {
-                    // center the length string in the display
-                    outstr += length;
-                    if (length > 9) {
-                        // 2-digit length
-                        i++;
-                    }
-                } else {
-                    outstr += ' ';
-                }
-            } else {
-                outstr += '=';
-            }
-        }
-
-        for ( ; i <= this.radius * 2 ; i++) {
-            outstr += ' ';
-        }
-
-        outstr += '|';
-        if (this.disp[height] == undefined) {
-            this.disp[height] = '';
-        }
-
-        // Append this string to the list of strings for this height.
-        // This allows us to display the towers side-by-side.
-        this.disp[height] += outstr;
-    }
-
-    public show() {
-        let i = this.disp.length - 1;
-
-        while (i >= 0) {
-            if (this.disp[i] == undefined) {
-                this.disp[i] = '';
-                for(let j = 0; j < (this.radius * 2) + 1; j++) {
-                    this.disp[i] += ' ';
-                }
-            }
-            console.log(this.disp[i]);
-            i--;
-        }
-    }
-    public resetDisplay() {
-        this.disp = [];
-    }
-
-    private disp: string[];
-}
-
-let ht = 13;
+let ht = 7;
 let a = new Spindle(ht);
 let b = new Spindle(ht);
 let c = new Spindle(ht);
