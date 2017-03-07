@@ -4,7 +4,7 @@ import {
     ConsoleTowerDisplay
        } from './hanoi';
 
-let ht = 13;
+let ht = 20;
 let a = new Spindle(ht);
 let b = new Spindle(ht);
 let c = new Spindle(ht);
@@ -97,9 +97,5 @@ function go() {
 }
 
 display(move);
-try {
-    go();
-} catch(e) {
-    console.error(e.stack);
-}
+go();
 

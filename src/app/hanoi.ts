@@ -1,6 +1,6 @@
 
 export interface TowerDisplay {
-    renderLine(length: number, height: number);
+    renderLine(length: number, height: number): void;
 }
 
 export class Spindle {

@@ -4,7 +4,7 @@ import {
     ConsoleTowerDisplay
        } from './hanoi';
 
-let ht = 7;
+let ht = 20;
 let a = new Spindle(ht);
 let b = new Spindle(ht);
 let c = new Spindle(ht);
@@ -16,24 +16,23 @@ for (let i = ht; i > 0; i--) {
 }
 
 function display(round: number) {
-    a.render(cdisp);
-    b.render(cdisp);
-    c.render(cdisp);
 
     // clear screen
-    process.stdout.write('\x1Bc');
+    if (process.stdout.write('\x1Bc')) {
+        a.render(cdisp);
+        b.render(cdisp);
+        c.render(cdisp);
 
-    console.log('rounds: ' + round);
+        console.log('rounds: ' + round);
 
-    // show towers
-    cdisp.show();
+        // show towers
+        cdisp.show();
 
+        let i = 1000;
+        while(i-->0 && process.stdout.write('.\x0d')) { }
+    }
     cdisp.resetDisplay();
 
-    let i = 1000;
-    while(i-->0){
-        process.stdout.write('.\x0d');
-    }
 }
 
 let round = 1;
@@ -43,6 +42,7 @@ function solve3towers(src: Spindle, dst: Spindle, store: Spindle,
                       nMove: number) {
 
     if (nMove <= 0) {
+        process.stdout.write('\n');
         return;
     }
 
@@ -57,7 +57,7 @@ function solve3towers(src: Spindle, dst: Spindle, store: Spindle,
 
     // move other disks to dst
     solve3towers(store, dst, src, nMove - 1);
-
 }
 
 solve3towers(a, c, b, a.length());
+process.stdout.write(' ', () => {display(round);});
