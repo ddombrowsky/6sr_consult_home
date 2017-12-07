@@ -1,3 +1,4 @@
+#!/usr/bin/env nodejs
 let sqlite3 = require('sqlite3').verbose();
 let express = require('express');
 let app = express();
