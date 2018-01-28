@@ -3,6 +3,7 @@ BEGIN TRANSACTION;
 CREATE TABLE jobs (id integer primary key asc, name string, title string, ord integer);
 INSERT INTO "jobs" VALUES(1,'Paylock IPT LLC','Integrations Software Engineer',10);
 INSERT INTO "jobs" VALUES(2,'Red Lion Controls','Embedded Systems Developer',20);
+INSERT INTO "jobs" VALUES(3,'Auto/Mate Systems','Senior Software Engineer',9);
 CREATE TABLE job_detail(id integer primary key asc, job_id integer, desc string, ord integer);
 INSERT INTO "job_detail" VALUES(1,1,'Implement UI/UX features using Knockout and Angular',10);
 INSERT INTO "job_detail" VALUES(2,1,'Excel as full stack developer for ServiceStack web application',20);
@@ -13,4 +14,8 @@ INSERT INTO "job_detail" VALUES(6,2,'Enhance firmware, application software, dri
 INSERT INTO "job_detail" VALUES(7,2,'Design and implement a redundant LAN using custom DHCP protocol extensions',20);
 INSERT INTO "job_detail" VALUES(8,2,'Write driver software for Marvell 6095 chip to include fine grained traffic limiting',30);
 INSERT INTO "job_detail" VALUES(9,2,'Design tests for 802.1X authentication support for switches',40);
+INSERT INTO "job_detail" VALUES(10,3,'Integrate accounting with bank positive pay files',10);
+INSERT INTO "job_detail" VALUES(11,3,'Implement credit card reader system using Vantiv Cloud',20);
+INSERT INTO "job_detail" VALUES(12,3,'Build systems with Java Spring, Gradle, and Jersey/Jax-RS',30);
+INSERT INTO "job_detail" VALUES(13,3,'Test systems with Mockito and JUnit',40);
 COMMIT;
