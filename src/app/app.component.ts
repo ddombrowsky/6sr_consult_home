@@ -5,10 +5,6 @@ import { Job, JobDetail } from './job';
 @Component({
   selector: 'sixsr-home',
   styles: [`
-    .selected {
-        background-color: #CFD8DC !important;
-        color: white;
-    }
     .jobtitle {
         cursor: pointer
     }
