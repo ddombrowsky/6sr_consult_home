@@ -10,7 +10,7 @@ import { Job, JobDetail } from './job';
     }
   `],
   template: `
-    <h2>Work Experience &amp; Projects:</h2>
+    <p>Work Experience &amp; Projects:</p>
     <ul class="jobs">
         <li class="jobentry" *ngFor="let job of jobs">
             <span class="jobname">{{job.name}}</span> |

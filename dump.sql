@@ -1,9 +1,14 @@
 PRAGMA foreign_keys=OFF;
 BEGIN TRANSACTION;
 CREATE TABLE jobs (id integer primary key asc, name string, title string, ord integer);
-INSERT INTO "jobs" VALUES(1,'Paylock IPT LLC','Integrations Software Engineer',10);
-INSERT INTO "jobs" VALUES(2,'Red Lion Controls','Embedded Systems Developer',20);
-INSERT INTO "jobs" VALUES(3,'Auto/Mate Systems','Senior Software Engineer',9);
+INSERT INTO "jobs" VALUES(1,'Paylock IPT LLC','Integrations Software Engineer',99);
+INSERT INTO "jobs" VALUES(2,'Red Lion Controls','Embedded Systems Developer',98);
+INSERT INTO "jobs" VALUES(3,'Auto/Mate Systems','Senior Software Engineer',97);
+INSERT INTO "jobs" VALUES(4,'Every USB','Contract (6SR)',96);
+INSERT INTO "jobs" VALUES(5,'Digital Video Archive','Contract (6SR)',95);
+INSERT INTO "jobs" VALUES(6,'Web Advanced','Contract (6SR)',94);
+INSERT INTO "jobs" VALUES(7,'SRC Solutions','Contract (6SR)',93);
+INSERT INTO "jobs" VALUES(8,'Red Lion Controls','Contract (6SR)',92);
 CREATE TABLE job_detail(id integer primary key asc, job_id integer, desc string, ord integer);
 INSERT INTO "job_detail" VALUES(1,1,'Implement UI/UX features using Knockout and Angular',10);
 INSERT INTO "job_detail" VALUES(2,1,'Excel as full stack developer for ServiceStack web application',20);
@@ -18,4 +23,19 @@ INSERT INTO "job_detail" VALUES(10,3,'Integrate accounting with bank positive pa
 INSERT INTO "job_detail" VALUES(11,3,'Implement credit card reader system using Vantiv Cloud',20);
 INSERT INTO "job_detail" VALUES(12,3,'Build systems with Java Spring, Gradle, and Jersey/Jax-RS',30);
 INSERT INTO "job_detail" VALUES(13,3,'Test systems with Mockito and JUnit',40);
+INSERT INTO "job_detail" VALUES(15,4,'Wrote "USB Copy Pro"',1);
+INSERT INTO "job_detail" VALUES(16,4,'Node.js, npm, electron, RSA crypto, USB communication',2);
+INSERT INTO "job_detail" VALUES(17,5,'Ported Classic .NET to VB.NET 4',1);
+INSERT INTO "job_detail" VALUES(18,5,'authorize.net API for CC processing',2);
+INSERT INTO "job_detail" VALUES(19,6,'Felt Bicycles, feltbicycles.com',1);
+INSERT INTO "job_detail" VALUES(20,6,'implemented ERP connector using C#, MSSQL',2);
+INSERT INTO "job_detail" VALUES(21,6,'Mpell Solutions, mpellsolutions.com, rebate processor',3);
+INSERT INTO "job_detail" VALUES(22,6,'Audit trail system.',4);
+INSERT INTO "job_detail" VALUES(23,6,'C#, MSSQL, Entity Framework, Hangfire, CodeFirst Migrations, AutoMapper',5);
+INSERT INTO "job_detail" VALUES(24,7,'Java, Spring',1);
+INSERT INTO "job_detail" VALUES(25,7,'Tomcat8, Thymeleaf',2);
+INSERT INTO "job_detail" VALUES(26,8,'Linux systems programming',1);
+INSERT INTO "job_detail" VALUES(27,8,'Linaro, arm9, sitara cortex-A8, eldk, u-boot',2);
+INSERT INTO "job_detail" VALUES(28,8,'C, C++, docker',3);
+
 COMMIT;
