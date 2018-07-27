@@ -49,7 +49,7 @@ app.get('/api/jobs', function(req: any, res: any) {
                 let dbj = new DBJob(rows[i].id,
                                     rows[i].name,
                                     rows[i].title);
-                jobs.push(dbj.toJSON());
+                jobs.push(dbj.toPoco());
                 // console.log('received from sqlite: ' + rows[i].name);
             }
 
@@ -67,7 +67,7 @@ app.get('/api/job/:id', function(req: any, res: any) {
 
     let details: any[] = [];
 
-    db.all('select description from job_detail ' +
+    db.all('select description, url from job_detail ' +
            'where job_id = ? order by ord asc',
         [ req.params.id ],
         function(err: string, rows: any[]) {
@@ -76,7 +76,10 @@ app.get('/api/job/:id', function(req: any, res: any) {
                 return;
             }
             for (let i = 0; i < rows.length; i++) {
-                details.push({desc: rows[i].description});
+                details.push({
+                    desc: rows[i].description,
+                    url: rows[i].url
+                });
             }
 
             res.json(details);

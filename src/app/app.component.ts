@@ -18,7 +18,13 @@ import { Job, JobDetail } from './job';
             <div class="jobdetailblock" *ngIf="expandedJob[job.id] == true">
             <ul>
                 <li *ngFor="let detail of job.details">
-                    <span class="jobdetail">{{detail.desc}}</span>
+                    <a *ngIf="detail.url != null"
+                       [href]="detail.url" target="_blank">
+                        <span class="jobdetail">{{detail.desc}}</span>
+                    </a>
+                    <span *ngIf="detail.url == null" class="jobdetail">
+                        {{detail.desc}}
+                    </span>
                 </li>
             </ul>
             </div>

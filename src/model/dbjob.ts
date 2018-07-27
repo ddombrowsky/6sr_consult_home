@@ -6,7 +6,7 @@ export class DBJob {
         public title: string,
     ) { }
 
-    public toJSON() {
+    public toPoco() {
         return {
             id: this.id,
             name: this.name,
