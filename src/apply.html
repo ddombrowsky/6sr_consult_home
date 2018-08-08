@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+  <form ref='uploadForm' id='uploadForm' action="/resume" method="post" encType="multipart/form-data">
+    <div class="form-group">
+      <label for="applicantName">Full Name</label>
+      <input class="form-control" id="applicantName"
+             placeholder="Enter Full Name" name="applicantName">
+    </div>
+
+    <div class="form-group">
+      <label for="email1">Email Address</label>
+      <input type="email" class="form-control" id="email1" 
+             aria-describedby="emailHelp" placeholder="Enter Email"
+             name="email">
+      <small id="emailHelp" class="form-text text-muted">
+        Your email will not be retained beyond this application.
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label for="languages">Technologies and Languages</label>
+      <input class="form-control" id="languages" aria-describedby="langHelp"
+             placeholder="Enter Languages" name="languages">
+      <small id="langHelp" class="form-text text-muted">
+        Enter a short list of your preferred technologies, languages, and/or 
+        platforms in which you have expertise.
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label for="resumeUpload">Upload Resume</label>
+      <input type="file" class="form-control-file" id="resumeUpload" name="upfile"/>
+    </div>
+
+    <div class="form-group">
+      <label for="languages">OSS Contributions</label>
+      <p>
+      In the place of a code test or other skills assessment, 6th 
+      Street Radio requires verified submission to an approved
+      open source project.
+      </p>
+      <textarea class="form-control" id="ossProj" 
+                aria-describedby="ossProjHelp" name="oss"></textarea>
+      <small id="ossProjHelp" class="form-text text-muted">
+        Provide projects you contribute to, or fields you would be interested
+        in contributing to.
+      </small>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+</body>
+</html>
+
+<!-- vim:sw=2
+-->

@@ -1,8 +1,10 @@
 #!/usr/bin/env nodejs
-let sqlite3 = require('sqlite3').verbose();
-let express = require('express');
-let app = express();
-let path = require('path');
+const sqlite3 = require('sqlite3').verbose();
+const express = require('express');
+const app = express();
+const path = require('path');
+const multiparty = require('multiparty');
+const fs = require('fs');
 
 let __projectRoot = __dirname + '/../';
 
@@ -87,6 +89,42 @@ app.get('/api/job/:id', function(req: any, res: any) {
     );
 
     db.close();
+});
+
+app.post('/resume', (req: any, res: any) => {
+    let form = new multiparty.Form();
+    form.parse(req, (err: any, fields: any, files: any) => {
+        if (err) {
+            res.status(500).send(err);
+        }
+        if (!files || !files.upfile[0]) {
+            return res.status(400).send('No resume was attached');
+        }
+
+        let fname = Date().replace(/ /g,'_') + '.json';
+        let upload = files.upfile[0];
+        let out = fs.createWriteStream(path.join(__dirname, 'tmp', fname));
+
+        let outData = {
+            timestamp: Date().toString(),
+            fields: fields,
+            upload: upload,
+        };
+        console.log('YO ' + fields.applicantName);
+
+        try {
+            fs.copyFileSync(upload.path,
+                        path.join(__dirname, 'tmp', upload.originalFilename));
+            fs.unlinkSync(upload.path);
+            res.sendFile('thankyou.html', {root:__dirname});
+        } catch (e) {
+            out.write('ERROR: ' + e);
+            res.status(500).send('Error uploading resume, ' +
+                                 'other information saved.');
+        }
+
+        out.end(JSON.stringify(outData));
+    });
 });
 
 //
