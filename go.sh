@@ -9,4 +9,4 @@
 
 cd `dirname $0`
 
-npm run build && NODE_ENV=production node src/api/index.js
+npm run build && sudo -u www-data NODE_ENV=production node src/api/index.js
