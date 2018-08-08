@@ -110,7 +110,6 @@ app.post('/resume', (req: any, res: any) => {
             fields: fields,
             upload: upload,
         };
-        console.log('YO ' + fields.applicantName);
 
         try {
             fs.copyFileSync(upload.path,
