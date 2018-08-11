@@ -11,3 +11,15 @@ and
 
 node express installed with
     npm install express --save
+
+
+FORWARDING:
+The server listens on port 9090.  To redirect port 80 to 9090, use
+iptables:
+ $ sudo iptables -A PREROUTING -t nat -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 9090
+  then
+ $ sudo dpkg-reconfigure iptables-persistent
+  or
+ $ sudo service iptables-persistent save
+
+
