@@ -98,12 +98,14 @@ app.post('/resume', (req: any, res: any) => {
             res.status(500).send(err);
         }
 
-        let fname = Date().replace(/ /g,'_') + '.json';
+        let tstamp = new Date();
+        let fname = tstamp.toISOString() + '.json';
         let upload = files.upfile[0];
         let out = fs.createWriteStream(path.join(__dirname, 'tmp', fname));
 
         let outData = {
-            timestamp: Date().toString(),
+            timestamp: tstamp.toString(),
+            utime: tstamp.getTime(),
             fields: fields,
             upload: upload,
             error: "",
@@ -111,8 +113,15 @@ app.post('/resume', (req: any, res: any) => {
 
         try {
             if (upload.originalFilename) {
-                fs.copyFileSync(upload.path,
-                            path.join(__dirname, 'tmp', upload.originalFilename));
+                fs.copyFileSync(
+                    upload.path,
+                    path.join(
+                        __dirname,
+                        'tmp',
+                       tstamp.getTime().toString() +
+                           upload.originalFilename
+                    )
+                );
                 fs.unlinkSync(upload.path);
             }
             res.sendFile('thankyou.html', { root:__dirname });
