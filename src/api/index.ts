@@ -97,9 +97,6 @@ app.post('/resume', (req: any, res: any) => {
         if (err) {
             res.status(500).send(err);
         }
-        if (!files || !files.upfile[0]) {
-            return res.status(400).send('No resume was attached');
-        }
 
         let fname = Date().replace(/ /g,'_') + '.json';
         let upload = files.upfile[0];
@@ -109,15 +106,18 @@ app.post('/resume', (req: any, res: any) => {
             timestamp: Date().toString(),
             fields: fields,
             upload: upload,
+            error: "",
         };
 
         try {
-            fs.copyFileSync(upload.path,
-                        path.join(__dirname, 'tmp', upload.originalFilename));
-            fs.unlinkSync(upload.path);
-            res.sendFile('thankyou.html', {root:__dirname});
+            if (upload.originalFilename) {
+                fs.copyFileSync(upload.path,
+                            path.join(__dirname, 'tmp', upload.originalFilename));
+                fs.unlinkSync(upload.path);
+            }
+            res.sendFile('thankyou.html', { root:__dirname });
         } catch (e) {
-            out.write('ERROR: ' + e);
+            outData.error = 'ERROR: ' + e;
             res.status(500).send('Error uploading resume, ' +
                                  'other information saved.');
         }
