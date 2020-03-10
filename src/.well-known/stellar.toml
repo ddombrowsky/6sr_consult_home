@@ -1,0 +1,16 @@
+[[CURRENCIES]]
+code="BTC"
+issuer="GAEDZ7BHMDYEMU6IJT3CTTGDUSLZWS5CQWZHGP4XUOIDG5ISH3AFAEK2"
+display_decimals=7
+name="Bitcoin"
+desc="1 Bitcoin"
+conditions="For use on the 6th Street Radio Options Exchange"
+image="https://6thstreetradio.org/6sr-logo.png"
+[[CURRENCIES]]
+code="USD"
+issuer="GAEDZ7BHMDYEMU6IJT3CTTGDUSLZWS5CQWZHGP4XUOIDG5ISH3AFAEK2"
+display_decimals=2
+name="US Dollar"
+desc="1 US Dollar"
+conditions="For use on the 6th Street Radio Options Exchange"
+image="https://6thstreetradio.org/6sr-logo.png"
