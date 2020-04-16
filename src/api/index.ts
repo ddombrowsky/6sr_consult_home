@@ -28,6 +28,15 @@ app.get('/node_modules/*', function(req: any, res: any) {
     res.sendFile(path.join(__projectRoot + '/../' + req.path));
 });
 
+// stellar toml file
+app.get('/.well-known/stellar.toml', function(req: any, res: any) {
+    res.header("Content-Type", "text/plain");
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers",
+               "Origin, X-Requested-With, Content-Type, Accept");
+    res.sendFile(path.join(__projectRoot + '/stellar.toml'));
+});
+
 //
 // Serve up the API.
 //

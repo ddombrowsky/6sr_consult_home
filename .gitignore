@@ -3,3 +3,4 @@ consult.db
 e2e
 node_modules
 src/*.png
+src/img/
