@@ -1,3 +1,29 @@
+# Sample stellar.toml
+VERSION="2.0.0"
+
+NETWORK_PASSPHRASE="Public Global Stellar Network ; September 2015"
+SIGNING_KEY="GBGBNGCHWYUNQOZMDSHWXGPL6XO5BBZJ2A5AOUZRTU7RS6E5VSEDQUC4"
+ACCOUNTS=[
+"GAEDZ7BHMDYEMU6IJT3CTTGDUSLZWS5CQWZHGP4XUOIDG5ISH3AFAEK2"
+]
+
+[DOCUMENTATION]
+ORG_NAME="6th Street Radio LLC"
+ORG_URL="https://6thstreetradio.org"
+ORG_LOGO="https://6thstreetradio.org/6sr-logo.png"
+ORG_DESCRIPTION="6th Street Radio is a Software Development Company specializing in Linux Systems and Crypto Currency development"
+ORG_PHYSICAL_ADDRESS="Glenville, NY, USA"
+ORG_PHONE_NUMBER="+15183743204"
+ORG_KEYBASE="david6sr"
+ORG_TWITTER="@6thstreetradio"
+ORG_OFFICIAL_EMAIL="jobs@6thstreetradio.org"
+
+[[PRINCIPALS]]
+name="David Dombrowsky"
+email="davek@6thstreetradio.org"
+keybase="david6sr"
+github="ddombrowsky"
+
 [[CURRENCIES]]
 code="BTC"
 issuer="GAEDZ7BHMDYEMU6IJT3CTTGDUSLZWS5CQWZHGP4XUOIDG5ISH3AFAEK2"
