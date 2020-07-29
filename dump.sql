@@ -4,12 +4,13 @@ CREATE TABLE jobs (id integer primary key asc, name string, title string, ord in
 INSERT INTO "jobs" VALUES(1,'Paylock IPT LLC','Integrations Software Engineer',99);
 INSERT INTO "jobs" VALUES(2,'Red Lion Controls','Embedded Systems Developer',98);
 INSERT INTO "jobs" VALUES(3,'Auto/Mate Systems','Senior Software Engineer',97);
-INSERT INTO "jobs" VALUES(4,'Every USB','Contract (6SR)',96);
+INSERT INTO "jobs" VALUES(4,'Every USB Custom Flash Drives','Contract (6SR)',96);
 INSERT INTO "jobs" VALUES(5,'Digital Video Archive','Contract (6SR)',95);
 INSERT INTO "jobs" VALUES(6,'Web Advanced','Contract (6SR)',94);
 INSERT INTO "jobs" VALUES(7,'SRC Solutions','Contract (6SR)',93);
 INSERT INTO "jobs" VALUES(8,'Red Lion Controls','Contract (6SR)',91);
 INSERT INTO "jobs" VALUES(9,'Advanced Medical','Contract (6SR)',92);
+INSERT INTO "jobs" VALUES(10,'CMH Works','Contract (6SR)',90);
 CREATE TABLE job_detail(id integer primary key asc, job_id integer, description string, url string, ord integer);
 INSERT INTO "job_detail" VALUES(1,1,'UI/UX features using Knockout and Angular',NULL,10);
 INSERT INTO "job_detail" VALUES(2,1,'Excel as full stack developer for ServiceStack web application',NULL,20);
@@ -46,4 +47,8 @@ INSERT INTO "job_detail" VALUES(32,9,'Hospital Staffing Software','http://gowith
 INSERT INTO "job_detail" VALUES(33,9,'PERL (lots of it), Moose, DBI',NULL,20);
 INSERT INTO "job_detail" VALUES(34,9,'perlcritic policies',NULL,30);
 INSERT INTO "job_detail" VALUES(35,9,'Apache, docker, MS Teams',NULL,40);
+INSERT INTO "job_detail" VALUES(36,10,'Medical Equipment Management Software','https://www.cmhworks.com/',1);
+INSERT INTO "job_detail" VALUES(37,10,'C#/.NET',NULL,2);
+INSERT INTO "job_detail" VALUES(38,10,'MSSQL',NULL,3);
+INSERT INTO "job_detail" VALUES(39,10,'Bootstrap, jQuery',NULL,4);
 COMMIT;
