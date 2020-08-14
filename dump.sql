@@ -8,9 +8,10 @@ INSERT INTO "jobs" VALUES(4,'Every USB Custom Flash Drives','Contract (6SR)',96)
 INSERT INTO "jobs" VALUES(5,'Digital Video Archive','Contract (6SR)',95);
 INSERT INTO "jobs" VALUES(6,'Web Advanced','Contract (6SR)',94);
 INSERT INTO "jobs" VALUES(7,'SRC Solutions','Contract (6SR)',93);
-INSERT INTO "jobs" VALUES(8,'Red Lion Controls','Contract (6SR)',91);
-INSERT INTO "jobs" VALUES(9,'Advanced Medical','Contract (6SR)',92);
-INSERT INTO "jobs" VALUES(10,'CMH Works','Contract (6SR)',90);
+INSERT INTO "jobs" VALUES(11,'Material Instinct','Contract (6SR)',80);
+INSERT INTO "jobs" VALUES(8,'Red Lion Controls','Contract (6SR)',70);
+INSERT INTO "jobs" VALUES(9,'Advanced Medical','Contract (6SR)',60);
+INSERT INTO "jobs" VALUES(10,'CMH Works','Contract (6SR)',20);
 CREATE TABLE job_detail(id integer primary key asc, job_id integer, description string, url string, ord integer);
 INSERT INTO "job_detail" VALUES(1,1,'UI/UX features using Knockout and Angular',NULL,10);
 INSERT INTO "job_detail" VALUES(2,1,'Excel as full stack developer for ServiceStack web application',NULL,20);
@@ -51,4 +52,9 @@ INSERT INTO "job_detail" VALUES(36,10,'Medical Equipment Management Software','h
 INSERT INTO "job_detail" VALUES(37,10,'C#/.NET',NULL,2);
 INSERT INTO "job_detail" VALUES(38,10,'MSSQL',NULL,3);
 INSERT INTO "job_detail" VALUES(39,10,'Bootstrap, jQuery',NULL,4);
+INSERT INTO "job_detail" VALUES(40,11,'e-commerce diamond wholesale site',NULL,10);
+INSERT INTO "job_detail" VALUES(41,11,'Ruby on Rails, docker, heroku, postgresql, redis',NULL,20);
+INSERT INTO "job_detail" VALUES(42,11,'Migrated site to AWS: S3, lambda, DynamoDB',NULL,30);
+INSERT INTO "job_detail" VALUES(43,11,'new sites using Spree e-commerce framework (RoR)',NULL,40);
+INSERT INTO "job_detail" VALUES(44,11,'Python rasa: machine learning chat bot',NULL,50);
 COMMIT;
