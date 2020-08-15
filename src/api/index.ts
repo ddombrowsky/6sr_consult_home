@@ -18,7 +18,7 @@ let server_port = 9090;
 const DBPATH = 'consult.db';
 
 //
-// Serve up the Angular2 pages.
+// Serve up the Angular pages.
 //
 app.use(express.static(__projectRoot));
 app.get('/', function(req: any, res: any) {
