@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 
 import { Job, JobDetail } from './job';
 
@@ -9,19 +9,19 @@ export class JobService {
     private jobsUrl = 'api/jobs';
     private jobDetailUrl = 'api/job/';
 
-    constructor(private http: Http) { }
+    constructor(private http: HttpClient) { }
 
     getJobs(): Promise<Job[]> {
         return this.http.get(this.jobsUrl)
             .toPromise()
-            .then(response => response.json() as Job[])
+            .then(response => response as Job[])
             .catch(this.handleError);
     }
 
     getJobDetail(id: number): Promise<JobDetail[]> {
         return this.http.get(this.jobDetailUrl + id)
             .toPromise()
-            .then(response => response.json() as JobDetail[])
+            .then(response => response as JobDetail[])
             .catch(this.handleError);
     }
 
