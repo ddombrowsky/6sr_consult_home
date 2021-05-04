@@ -6,13 +6,13 @@ import { JobService } from './job.service';
 import { AppComponent } from './app.component';
 
 @NgModule({
-  imports:      [
+  imports: [
     BrowserModule,
     HttpClientModule
   ],
   declarations: [ AppComponent ],
-  providers:    [ JobService ],
-  bootstrap:    [ AppComponent ]
+  providers: [ JobService ],
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }
 

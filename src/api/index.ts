@@ -6,7 +6,7 @@ const path = require('path');
 const multiparty = require('multiparty');
 const fs = require('fs');
 
-let __projectRoot = __dirname + '/../';
+let __projectRoot = __dirname + '/../../dist/ussr';
 
 import { DBJob } from '../model/dbjob';
 
@@ -98,50 +98,6 @@ app.get('/api/job/:id', function(req: any, res: any) {
     );
 
     db.close();
-});
-
-app.post('/resume', (req: any, res: any) => {
-    let form = new multiparty.Form();
-    form.parse(req, (err: any, fields: any, files: any) => {
-        if (err) {
-            res.status(500).send(err);
-        }
-
-        let tstamp = new Date();
-        let fname = tstamp.toISOString() + '.json';
-        let upload = files.upfile[0];
-        let out = fs.createWriteStream(path.join(__dirname, 'tmp', fname));
-
-        let outData = {
-            timestamp: tstamp.toString(),
-            utime: tstamp.getTime(),
-            fields: fields,
-            upload: upload,
-            error: "",
-        };
-
-        try {
-            if (upload.originalFilename) {
-                fs.copyFileSync(
-                    upload.path,
-                    path.join(
-                        __dirname,
-                        'tmp',
-                       tstamp.getTime().toString() +
-                           upload.originalFilename
-                    )
-                );
-                fs.unlinkSync(upload.path);
-            }
-            res.sendFile('thankyou.html', { root:__dirname });
-        } catch (e) {
-            outData.error = 'ERROR: ' + e;
-            res.status(500).send('Error uploading resume, ' +
-                                 'other information saved.');
-        }
-
-        out.end(JSON.stringify(outData));
-    });
 });
 
 //

@@ -4,34 +4,8 @@ import { Job, JobDetail } from './job';
 
 @Component({
   selector: 'sixsr-home',
-  styles: [`
-    .jobtitle {
-        cursor: pointer
-    }
-  `],
-  template: `
-    <p>Work Experience &amp; Projects:</p>
-    <ul class="jobs">
-        <li class="jobentry" *ngFor="let job of jobs">
-            <span class="jobname">{{job.name}}</span> |
-            <span class="jobtitle" (click)="onSelect(job)">{{job.title}}</span>
-            <div class="jobdetailblock" *ngIf="expandedJob[job.id] == true">
-            <ul>
-                <li *ngFor="let detail of job.details">
-                    <a *ngIf="detail.url != null"
-                       [href]="detail.url" target="_blank">
-                        <span class="jobdetail">{{detail.desc}}</span>
-                    </a>
-                    <span *ngIf="detail.url == null" class="jobdetail">
-                        {{detail.desc}}
-                    </span>
-                </li>
-            </ul>
-            </div>
-        </li>
-    </ul>
-
-  `,
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
   providers: [JobService]
 })
 

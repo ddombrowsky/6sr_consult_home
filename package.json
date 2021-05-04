@@ -4,7 +4,7 @@
   "description": "Basic angular site that runs the homepage of 6SR Consulting",
   "scripts": {
     "ng": "ng",
-    "build": "tsc -p src/ && ng build",
+    "build": "tsc -p src/api && ng build",
     "serve": "node src/api/index.js",
     "lint": "tslint ./src/**/*.ts -t verbose"
   },
@@ -21,9 +21,7 @@
     "multiparty": "^4.2.1",
     "rxjs": "~6.6.0",
     "sqlite3": "^5.0.0",
-    "systemjs": "0.19.40",
-    "tslib": "^2.0.0",
-    "zone.js": "~0.11.3"
+    "tslib": "^2.0.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1102.11",
