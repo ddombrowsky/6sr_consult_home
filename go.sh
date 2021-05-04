@@ -9,6 +9,8 @@
 
 cd `dirname $0`
 
-npm run build &&
-npm run ng build --prod && cp ./static/* ./dist/ussr/ &&
+set -x
+
+$(npm bin)/tsc -p src/api &&
+$(npm bin)/ng build --prod && cp ./static/* ./dist/ussr/ &&
 sudo -u www-data NODE_ENV=production node src/api/index.js
