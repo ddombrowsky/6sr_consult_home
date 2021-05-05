@@ -64,8 +64,35 @@
     </tr>
     <tr>
         <td>518-374-3204</td>
-        <td><a href="about.html">About this page...</a></td>
+        <td><button type="button" class="btn btn-primary" data-toggle="modal"
+		    data-target="#aboutbox">
+	    About</button></td>
     </tr>
   </table>
   </div>
+
+    <div class="modal fade" id="aboutbox" tabindex="-1"
+	 role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+	<div class="modal-content">
+	  <div class="modal-header">
+	    <h5 class="modal-title" id="exampleModalLabel">About This Site</h5>
+	    <button type="button" class="close" data-dismiss="modal"
+		    aria-label="Close">
+	      <span aria-hidden="true">&times;</span>
+	    </button>
+	  </div>
+	  <div class="modal-body">
+              About the 6th Street Radio Homepage<br/>
+              The source for this Angular/Gridsome site can be found here:
+              <a href="https://github.com/ddombrowsky/6sr_consult_home">
+                  https://github.com/ddombrowsky/6sr_consult_home
+              </a>
+	  </div>
+	  <div class="modal-footer">
+	    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	  </div>
+	</div>
+      </div>
+    </div>
 </html>
