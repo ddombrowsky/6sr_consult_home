@@ -4,10 +4,9 @@
 
 cd `dirname $0`
 
-set -x
+set -ex
 
-$(npm bin)/tsc -p src/api &&
-$(npm bin)/ng build --prod && cp ./static/* ./dist/ussr/ &&
+./build.sh
 
 if [ "$NODE_ENV" = "production" ] ; then
     sudo -u www-data NODE_ENV=production node src/api/index.js
