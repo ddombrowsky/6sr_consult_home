@@ -44,7 +44,7 @@ export default {
     PostCard
   },
   metaInfo: {
-    title: 'Hello, world!'
+    title: '6th Street Radio'
   }
 }
 </script>
