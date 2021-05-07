@@ -7,6 +7,7 @@
 module.exports = {
   siteName: '6th Street Radio',
   siteDescription: 'News from 6th Street Radio LLC',
+  pathPrefix: '/a',
 
   templates: {
     Post: '/:title',
