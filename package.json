@@ -19,6 +19,7 @@
     "@angular/platform-browser-dynamic": "~11.2.12",
     "@angular/router": "~11.2.12",
     "bootstrap": "^4.6.0",
+    "express": "^4.17.1",
     "jquery": "^3.6.0",
     "multiparty": "^4.2.1",
     "rxjs": "~6.6.0",
