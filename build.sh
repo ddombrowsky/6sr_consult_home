@@ -14,3 +14,5 @@ $(npm bin)/tsc -p src/api &&
 $(npm bin)/ng build --prod &&
 cp ./static/* ./dist/ussr/
 cp -r ./6srticles/dist ./dist/ussr/a
+
+tar cfJ dist.tar.xz ./dist/ ./src/api
