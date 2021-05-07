@@ -6,7 +6,7 @@ cd `dirname $0`
 
 set -ex
 
-./build.sh
+# run ./build.sh first, or copy dist.tar.xz from build machine
 
 if [ "$NODE_ENV" = "production" ] ; then
     sudo -u www-data NODE_ENV=production node src/api/index.js
