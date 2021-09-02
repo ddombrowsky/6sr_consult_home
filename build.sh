@@ -10,8 +10,8 @@ pushd 6srticles
 npm run build
 popd
 
-$(npm bin)/tsc -p src/api &&
-$(npm bin)/ng build --prod &&
+npx tsc -p src/api &&
+npx ng build --prod &&
 cp ./static/* ./dist/ussr/
 cp -r ./6srticles/dist ./dist/ussr/a
 
