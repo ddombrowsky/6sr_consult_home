@@ -40,3 +40,11 @@ name="6SR US Dollar Token"
 desc="6SR Trading System Token to represent 1 US Dollar"
 conditions="For use on the 6th Street Radio Options Exchange"
 image="https://6thstreetradio.org/6sr-logo.png"
+[[CURRENCIES]]
+code="WFTM"
+issuer="GAEDZ7BHMDYEMU6IJT3CTTGDUSLZWS5CQWZHGP4XUOIDG5ISH3AFAEK2"
+display_decimals=7
+name="Wrapped Fantom Token"
+desc="Represents WFTM on the FANTOM platform"
+conditions=""
+image="https://6thstreetradio.org/wftm-logo.png"
