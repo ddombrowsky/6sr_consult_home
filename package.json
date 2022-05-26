@@ -23,7 +23,7 @@
     "jquery": "^3.6.0",
     "multiparty": "^4.2.1",
     "rxjs": "~6.6.0",
-    "sqlite3": "^5.0.0",
+    "sqlite3": "^5.0.3",
     "tslib": "^2.0.0"
   },
   "devDependencies": {
