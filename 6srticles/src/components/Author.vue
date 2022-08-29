@@ -15,6 +15,8 @@
 		<p class="author__links">
 			<a href="//twitter.com/6thstreetradio">Follow on Twitter</a>
 			<a href="//github.com/ddombrowsky">GitHub</a>
+			<a href="https://t.me/sixthstreetradio">Telegram</a>
+			<a href="https://t.me/ussropt">Discussion</a>
 		</p>
 
 	</div>
